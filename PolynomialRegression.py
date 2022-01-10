@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import wget
 
-# %matplotlib inline
+# matplotlib inline
 # getting the data from url
 url = "https://s3-api.us-geo.objectstorage.softlayer.net/cf-courses-data/CognitiveClass/ML0101ENv3/labs/FuelConsumptionCo2.csv"
 
