@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import sklearn
+import seaborn as sns; sns.set()
 
 dataset = pd.read_csv('Social_Network_Ads.csv')
 X = dataset.iloc[:, [1, 2, 3]].values
@@ -28,3 +29,8 @@ y_pred  =  classifier.predict(X_test)
 from sklearn.metrics import confusion_matrix,accuracy_score
 cm = confusion_matrix(y_test, y_pred)
 ac = accuracy_score(y_test,y_pred)
+names = np.unique(y_pred)
+sns.heatmap(cm, square=True, annot=True, fmt='d', cbar=False,
+            xticklabels=names, yticklabels=names)
+plt.xlabel('Truth')
+plt.ylabel('Predicted')
