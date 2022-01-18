@@ -4,11 +4,11 @@ import pandas as pd
 import sklearn
 import seaborn as sns; sns.set()
 
-dataset = pd.read_csv('Social_Network_Ads.csv')
+dataset = pd.read_csv('Social_Network_Ads.csv') # have to update this
 X = dataset.iloc[:, [1, 2, 3]].values
 y = dataset.iloc[:, -1].values
 
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder # encoding categorical labels to numbers
 le = LabelEncoder()
 X[:,0] = le.fit_transform(X[:,0])
 
