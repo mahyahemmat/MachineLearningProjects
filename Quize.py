@@ -1,67 +1,29 @@
-# Python3 Program to print BFS traversal
-# from a given source vertex. BFS(int s)
-# traverses vertices reachable from s.
-from collections import defaultdict
+#class Solution:
+def matrixReshape(mat, r, c):
+    """number of rows"""
+    m = len(mat)
+    """number of columns"""
+    n = len(mat[0])
+    """checking if conversion is possible and input matrix has data to traverse"""
 
-# This class represents a directed graph
-# using adjacency list representation
-class Graph:
+    if m and n:
+        if r * c != m * n:
+            return mat
+        flat_list = [item for row in mat for item in row]
+        resh_list = []
+        for i in range(0, r):
+            if not len(resh_list):
+                resh_list=[[flat_list.pop(0)]]
+            elif len(resh_list) < i+1:
+                resh_list.append([flat_list.pop(0)])
+            while len(resh_list[i]) < c:
+                resh_list[i].append(flat_list.pop(0))
+        return resh_list
 
-    # Constructor
-    def __init__(self):
-
-        # default dictionary to store graph
-        self.graph = defaultdict(list)
-
-    # function to add an edge to graph
-    def addEdge(self,u,v):
-        self.graph[u].append(v)
-
-
-    # Function to print a BFS of graph
-    def BFS(self, s):
-
-        # Mark all the vertices as not visited
-        visited = [False] * (max(self.graph) + 1)
-
-        # Create a queue for BFS
-        queue = []
-
-        # Mark the source node as 
-        # visited and enqueue it
-        queue.append(s)
-        visited[s] = True
-
-        while queue:
-
-            # Dequeue a vertex from 
-            # queue and print it
-            s = queue.pop(0)
-            print (s, end = " ")
-
-            # Get all adjacent vertices of the
-            # dequeued vertex s. If a adjacent
-            # has not been visited, then mark it
-            # visited and enqueue it
-            for i in self.graph[s]:
-                if visited[i] == False:
-                    queue.append(i)
-                    visited[i] = True
-
-# Driver code
-
-# Create a graph given in
-# the above diagram
-g = Graph()
-g.addEdge(0, 1)
-g.addEdge(0, 2)
-g.addEdge(1, 2)
-g.addEdge(2, 0)
-g.addEdge(2, 3)
-g.addEdge(3, 3)
-
-
-print ("Following is Breadth First Traversal"
-                  " (starting from vertex 2)")
-g.BFS(2)
-
+if __name__ == "__main__":
+    # Graph using dictionaries
+    mat=[[1, 2], [3, 4]]
+    r=4
+    c=1
+    resh=matrixReshape(mat, r, c)
+    print(resh)
