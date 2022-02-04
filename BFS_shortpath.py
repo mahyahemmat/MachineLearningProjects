@@ -42,7 +42,7 @@ def BFS_SP(graph, start, goal):
                     return
             explored.append(node)
 
-    # Condition when the nodes
+    # Condition when the nodesh
     # are not connected
     print("So sorry, but a connecting"
           "path doesn't exist :( :(")
