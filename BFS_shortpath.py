@@ -45,7 +45,7 @@ def BFS_SP(graph, start, goal):
     # Condition when the nodesh
     # are not connected
     print("So sorry, but a connecting"
-          "path doesn't exist :( :(")
+          "path doesn't exist :( :( :(")
     return
 
 
